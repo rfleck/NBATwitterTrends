@@ -1,21 +1,20 @@
 package com.rfleck.nbatwittertrends;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+    private List<NBATeam> teamsList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +22,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         Button buttonSearch = (Button) findViewById(R.id.bSearch);
         buttonSearch.setOnClickListener(this);
-
-        List<NBATeam> teamsList = new ArrayList<>();
 
         teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
         teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
@@ -44,9 +41,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         ListView listView = (ListView) findViewById(R.id.ListViewTeams);
         listView.setAdapter(new TeamListAdapter(this, teamsList));
-        //listView.setOnClickListener(this);
+        listView.setOnItemClickListener(this);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -71,12 +67,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intentOpenResults = new Intent(this, Results.class);
-        startActivity(intentOpenResults);
-    }
+        Toast.makeText(this, "Search Button Clicked !", Toast.LENGTH_SHORT).show();
+     }
 
-    //@Override
-    //public void onItemClick(AdapterView<?> S, View arg1, int pos, long id){
-    //    Toast.makeText(this, pos + "Selected", Toast.LENGTH_SHORT).show();
-    //}
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        NBATeam teamSelected = teamsList.get(position);
+        Toast.makeText(this, teamSelected.getTeamCity() + teamSelected.getTeamName() + " Selected !", Toast.LENGTH_SHORT).show();
+    }
 }

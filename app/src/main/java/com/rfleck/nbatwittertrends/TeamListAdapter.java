@@ -4,12 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.List;
 
 /**
@@ -55,5 +52,5 @@ public class TeamListAdapter extends BaseAdapter {
         logo.setImageResource(team.getTeamLogo());
 
         return view;
-    }
+   }
 }
