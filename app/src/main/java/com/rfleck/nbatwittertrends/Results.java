@@ -4,13 +4,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Results extends AppCompatActivity {
+    private List<Tweet> tweetList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+
+        TextView textView = (TextView) findViewById(R.id.TextViewTeamSelected);
+        String team = getIntent().getStringExtra("selectedTeam");
+        textView.setText(team);
+
+        tweetList.add(new Tweet("User Bla Bla ", "Text Bla Bla Bla", R.drawable.bulls));
+        tweetList.add(new Tweet("User Bla Bla ", "Text Bla Bla Bla", R.drawable.rockets));
+        tweetList.add(new Tweet("User Bla Bla ", "Text Bla Bla Bla", R.drawable.spurs));
+
+        ListView listView = (ListView) findViewById(R.id.ListViewSearchResults);
+        listView.setAdapter(new TweetListAdapter(this, tweetList));
     }
 
     @Override

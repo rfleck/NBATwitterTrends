@@ -1,5 +1,6 @@
 package com.rfleck.nbatwittertrends;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -23,21 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonSearch = (Button) findViewById(R.id.bSearch);
         buttonSearch.setOnClickListener(this);
 
-        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio", " Spurs", R.drawable.spurs));
-        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio", " Spurs", R.drawable.spurs));
-        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio", " Spurs", R.drawable.spurs));
-        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio", " Spurs", R.drawable.spurs));
-        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio", " Spurs", R.drawable.spurs));
+        teamsList.add(new NBATeam("Chicago ", "Bulls", R.drawable.bulls));
+        teamsList.add(new NBATeam("Houston ", "Rockets", R.drawable.rockets));
+        teamsList.add(new NBATeam("San Antonio ", "Spurs", R.drawable.spurs));
 
         ListView listView = (ListView) findViewById(R.id.ListViewTeams);
         listView.setAdapter(new TeamListAdapter(this, teamsList));
@@ -74,5 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         NBATeam teamSelected = teamsList.get(position);
         Toast.makeText(this, teamSelected.getTeamCity() + teamSelected.getTeamName() + " Selected !", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,Results.class);
+        i.putExtra("selectedTeam",teamSelected.getTeamCity() + teamSelected.getTeamName());
+        startActivity(i);
     }
 }
