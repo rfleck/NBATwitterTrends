@@ -6,35 +6,33 @@ package com.rfleck.nbatwittertrends;
 public class Tweet {
     private String user;
     private String text;
-    private int image;
+    private String imageURL;
 
-    public Tweet(String user, String text, int image){
+    public Tweet(String user, String text, String imageURL) {
         this.user = user;
         this.text = text;
-        this.image = image;
+        this.imageURL = imageURL;
     }
 
-    public String getUser(){
+    public String getUser() {
         return this.user;
     }
 
-    public void setUser(String user){
-        this.user  = user;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public String getText(){
+    public String getText() {
         return this.text;
     }
 
-    public void setText(String text){
+    public void setText(String text) {
         this.text = text;
     }
 
-    public int getImage(){
-        return this.image;
-    }
+    public String getImageURL() { return this.imageURL; }
 
-    public void setImage(int image){
-        this.image = image;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -46,14 +49,17 @@ public class TweetListAdapter extends BaseAdapter {
 
         TextView user = (TextView) view.findViewById(R.id.user);
         TextView text = (TextView) view.findViewById(R.id.text);
+
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
         Tweet tweet = tweets.get(position);
 
         user.setText(tweet.getUser());
         text.setText(tweet.getText());
-        image.setImageResource(tweet.getImage());
 
+        Picasso.with(context)
+                .load(tweet.getImageURL())
+                .into(image);
         return view;
     }
 }
