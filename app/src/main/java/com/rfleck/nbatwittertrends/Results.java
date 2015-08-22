@@ -48,8 +48,9 @@ public class Results extends AppCompatActivity {
 
         try {
             Query query = new Query(team);
-            query.setCount(20);
+            query.setCount(30);
             query.setResultType(Query.ResultType.popular);
+            //query.setResultType(Query.ResultType.mixed);
 
             QueryResult result;
             result = twitter.search(query);
@@ -61,9 +62,9 @@ public class Results extends AppCompatActivity {
                 MediaEntity[] media = tweet.getMediaEntities();
                 for(MediaEntity m : media){
                     tweetImageURL = m.getMediaURL();
-                    //Toast.makeText(Results.this, tweetImageURL, Toast.LENGTH_SHORT).show();
                 }
-                tweetList.add(new Tweet("@" + tweet.getUser().getScreenName(),  tweet.getText(), tweetImageURL));
+                tweetList.add(new Tweet("From: @" + tweet.getUser().getScreenName() + " - " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
+                //tweetList.add(new Tweet(tweet.getSource() + " - " + tweet.getUser().getScreenName() + " - " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
             }
 
         } catch (TwitterException te) {

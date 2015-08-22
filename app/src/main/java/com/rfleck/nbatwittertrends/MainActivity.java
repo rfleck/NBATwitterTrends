@@ -22,22 +22,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-        //Button buttonSearch = (Button) findViewById(R.id.bSearch);
-        //buttonSearch.setOnClickListener(this);
-
-        teamsList.add(new NBATeam("Chicago ", "Bulls", R.drawable.bulls));
-        teamsList.add(new NBATeam("Houston ", "Rockets", R.drawable.rockets));
-        teamsList.add(new NBATeam("San Antonio ", "Spurs", R.drawable.spurs));
+        teamsList.add(new NBATeam("Portland", "Trail Blazers", R.drawable.blazers));
+        teamsList.add(new NBATeam("Milwaukee", "Bucks", R.drawable.bucks));
+        teamsList.add(new NBATeam("Chicago", "Bulls", R.drawable.bulls));
+        teamsList.add(new NBATeam("Cleveland", "Cavaliers", R.drawable.cavaliers));
+        teamsList.add(new NBATeam("Boston", "Celtics", R.drawable.celtics));
+        teamsList.add(new NBATeam("Los Angeles", "Clippers", R.drawable.clippers));
+        teamsList.add(new NBATeam("Memphis", "Grizzles", R.drawable.grizzles));
+        teamsList.add(new NBATeam("Atlanta", "Hawks", R.drawable.hawks));
+        teamsList.add(new NBATeam("Miami", "Heat", R.drawable.heat));
+        teamsList.add(new NBATeam("Charlotte", "Hornets", R.drawable.hornets));
+        teamsList.add(new NBATeam("Utah", "Jazz", R.drawable.jazz));
+        teamsList.add(new NBATeam("Sacramento", "Kings", R.drawable.kings));
+        teamsList.add(new NBATeam("New York", "Knicks", R.drawable.knicks));
+        teamsList.add(new NBATeam("Los Angeles", "Lakers", R.drawable.lakers));
+        teamsList.add(new NBATeam("Orlando", "Magic", R.drawable.magic));
+        teamsList.add(new NBATeam("Dallas", "Mavericks", R.drawable.mavs));
+        teamsList.add(new NBATeam("Brooklyn", "Nets", R.drawable.nets));
+        teamsList.add(new NBATeam("Denver", "Nuggets", R.drawable.nuggets));
+        teamsList.add(new NBATeam("Indiana", "Pacers", R.drawable.pacers));
+        teamsList.add(new NBATeam("New Orleans", "Pelicans", R.drawable.pelicans));
+        teamsList.add(new NBATeam("Detroit", "Pistons", R.drawable.pistons));
+        teamsList.add(new NBATeam("Toronto", "Raptors", R.drawable.raptors));
+        teamsList.add(new NBATeam("Houston", "Rockets", R.drawable.rockets));
+        teamsList.add(new NBATeam("Philadelphia", "Seventy Sixers", R.drawable.sixers));
+        teamsList.add(new NBATeam("San Antonio", "Spurs", R.drawable.spurs));
+        teamsList.add(new NBATeam("Phoenix", "Suns", R.drawable.suns));
+        teamsList.add(new NBATeam("Oklahoma City", "Thunder", R.drawable.thunder));
+        teamsList.add(new NBATeam("Golden State", "Warriors", R.drawable.warriors));
+        teamsList.add(new NBATeam("Washington", "Wizards", R.drawable.wizards));
+        teamsList.add(new NBATeam("Minesota", "Timber Wolves", R.drawable.wolves));
 
         ListView listView = (ListView) findViewById(R.id.ListViewTeams);
         listView.setAdapter(new TeamListAdapter(this, teamsList));
         listView.setOnItemClickListener(this);
 
         TextView textView = (TextView) findViewById(R.id.footerMsg);
-        textView.setText("App Loaded - Select the Team");
+        textView.setText("Ready - Please Select the Team");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,8 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        TextView textView = (TextView) findViewById(R.id.footerMsg);
+        textView.setText("Searching Tweeter - Please Wait...");
+
         NBATeam teamSelected = teamsList.get(position);
         Toast.makeText(this, teamSelected.getTeamCity() + teamSelected.getTeamName() + " Selected !", Toast.LENGTH_SHORT).show();
+
         Intent i = new Intent(this,Results.class);
         i.putExtra("selectedTeam",teamSelected.getTeamCity() + teamSelected.getTeamName());
         startActivity(i);
