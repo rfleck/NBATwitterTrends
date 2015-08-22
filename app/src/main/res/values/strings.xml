@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NBA Twitter Trends App</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_results">Tweeter Search Results</string>
+    <string name="title_activity_results">Search Results</string>
     <string name="hello_world">Hello world!</string>
 </resources>

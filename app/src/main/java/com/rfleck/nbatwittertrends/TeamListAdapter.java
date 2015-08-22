@@ -48,7 +48,7 @@ public class TeamListAdapter extends BaseAdapter {
         ImageView logo = (ImageView) view.findViewById(R.id.imgTeam);
         NBATeam team = teams.get(position);
 
-        name.setText(team.getTeamCity() + team.getTeamName());
+        name.setText(team.getTeamCity() + " " + team.getTeamName());
         logo.setImageResource(team.getTeamLogo());
 
         return view;

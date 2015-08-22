@@ -49,7 +49,8 @@ public class Results extends AppCompatActivity {
         try {
             Query query = new Query(team);
             query.setCount(30);
-            query.setResultType(Query.ResultType.popular);
+            //query.setResultType(Query.ResultType.popular);
+            query.setResultType(Query.ResultType.recent);
             //query.setResultType(Query.ResultType.mixed);
 
             QueryResult result;

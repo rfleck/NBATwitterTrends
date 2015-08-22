@@ -30,7 +30,7 @@
             android:id="@+id/ListViewSearchResults"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textColor="#ffffff"/>
     </FrameLayout>
 </LinearLayout>
