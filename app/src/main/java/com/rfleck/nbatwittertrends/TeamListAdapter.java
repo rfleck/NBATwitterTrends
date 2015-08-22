@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
+
 /**
  * Created by rfleck on 8/4/2015.
  */
@@ -50,7 +51,6 @@ public class TeamListAdapter extends BaseAdapter {
 
         name.setText(team.getTeamCity() + " " + team.getTeamName());
         logo.setImageResource(team.getTeamLogo());
-
         return view;
    }
 }

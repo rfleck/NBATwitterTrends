@@ -1,8 +1,20 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="BaseTheme" />
+    <style name="BaseTheme" parent="Base.V21.Theme.AppCompat">
         <!-- Customize your theme here. -->
-    </style>
+        <item name="colorPrimary">@color/primary_material_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
+        <item name="colorAccent">@color/accent_material_dark</item>
+        <item name="android:colorForeground">@color/bright_foreground_material_dark</item>
+        <item name="android:colorBackground">@color/background_material_dark</item>
+        <item name="android:windowBackground">@color/background_material_dark</item>
+        <item name="android:colorControlHighlight">@color/highlighted_text_material_dark</item>
 
+        <!-- Action Mode Overlay -->
+        <item name="windowActionModeOverlay">true</item>
+
+        <!-- Cor da Action Bar de Contexto (CAB) -->
+        <item name="actionModeBackground">@color/primary_material_dark</item>
+    </style>
 </resources>

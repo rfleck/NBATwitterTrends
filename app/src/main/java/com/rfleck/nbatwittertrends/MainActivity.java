@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         teamsList.add(new NBATeam("Oklahoma City", "Thunder", R.drawable.thunder));
         teamsList.add(new NBATeam("Golden State", "Warriors", R.drawable.warriors));
         teamsList.add(new NBATeam("Washington", "Wizards", R.drawable.wizards));
-        teamsList.add(new NBATeam("Minesota", "Timber Wolves", R.drawable.wolves));
+        teamsList.add(new NBATeam("Minnesota", "Timberwolves", R.drawable.wolves));
 
         ListView listView = (ListView) findViewById(R.id.ListViewTeams);
         listView.setAdapter(new TeamListAdapter(this, teamsList));
