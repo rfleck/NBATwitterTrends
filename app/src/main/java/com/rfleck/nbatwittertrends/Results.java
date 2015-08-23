@@ -64,7 +64,7 @@ public class Results extends AppCompatActivity {
                 for(MediaEntity m : media){
                     tweetImageURL = m.getMediaURL();
                 }
-                tweetList.add(new Tweet("From: @" + tweet.getUser().getScreenName() + " - " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
+                tweetList.add(new Tweet("FROM: @" + tweet.getUser().getScreenName() + " - DATE: " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
                 //tweetList.add(new Tweet(tweet.getSource() + " - " + tweet.getUser().getScreenName() + " - " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
             }
 
@@ -99,6 +99,7 @@ public class Results extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     private void alertView(String message ) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
