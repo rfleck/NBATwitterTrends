@@ -25,6 +25,7 @@
             android:layout_gravity="center|center_vertical"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/bright_foreground_material_dark"
             android:text="Team Selected"/>
     </FrameLayout>
 
