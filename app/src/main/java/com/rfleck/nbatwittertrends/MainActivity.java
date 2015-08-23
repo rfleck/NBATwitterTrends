@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NBATeam teamSelected = teamsList.get(position);
         Toast.makeText(this, teamSelected.getTeamCity() + teamSelected.getTeamName() + " Selected !", Toast.LENGTH_SHORT).show();
 
-        Intent i = new Intent(this,Results.class);
-        i.putExtra("selectedTeam", teamSelected.getTeamCity() + " " + teamSelected.getTeamName());
+        Intent i = new Intent(this,ResultsActivity.class).putExtra("selectedTeam",teamSelected);
+        //i.putExtra("selectedTeam", teamSelected.getTeamCity() + " " + teamSelected.getTeamName());
         startActivity(i);
     }
 }

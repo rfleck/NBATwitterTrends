@@ -40,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="center"
-            android:textSize="10dp"
+            android:textColor="@color/bright_foreground_material_dark"
+            android:textSize="15dp"
             android:text="Ready !"/>
     </FrameLayout>
 </LinearLayout>

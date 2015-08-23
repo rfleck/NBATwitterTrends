@@ -3,17 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rfleck.nbatwittertrends.Results">
+    tools:context="com.rfleck.nbatwittertrends.ResultsActivity">
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/ImageViewTeamSelected"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/nbalogo" />
         <TextView
             android:id="@+id/TextViewTeamSelected"
-            android:layout_width="fill_parent"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:gravity="center"
+            android:layout_gravity="center|center_vertical"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Team Selected"/>

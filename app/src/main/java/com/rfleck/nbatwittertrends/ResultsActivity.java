@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,10 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import twitter4j.*;
-import twitter4j.api.HelpResources;
 import twitter4j.conf.ConfigurationBuilder;
 
-public class Results extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity {
     private List<Tweet> tweetList = new ArrayList<>();
 
     @Override
@@ -26,9 +26,12 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        ImageView imageView = (ImageView) findViewById(R.id.ImageViewTeamSelected);
         TextView textView = (TextView) findViewById(R.id.TextViewTeamSelected);
-        String team = getIntent().getStringExtra("selectedTeam");
-        textView.setText(team);
+        NBATeam selectedTeam = getIntent().getExtras().getParcelable("selectedTeam");
+
+        imageView.setImageResource(selectedTeam.getTeamLogo());
+        textView.setText(selectedTeam.getTeamCity() + " " + selectedTeam.getTeamName());
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
@@ -47,7 +50,7 @@ public class Results extends AppCompatActivity {
         Twitter twitter = tf.getInstance();
 
         try {
-            Query query = new Query(team);
+            Query query = new Query(selectedTeam.getTeamCity() + " " + selectedTeam.getTeamName());
             query.setCount(30);
             //query.setResultType(Query.ResultType.popular);
             query.setResultType(Query.ResultType.recent);
@@ -64,13 +67,13 @@ public class Results extends AppCompatActivity {
                 for(MediaEntity m : media){
                     tweetImageURL = m.getMediaURL();
                 }
-                tweetList.add(new Tweet("FROM: @" + tweet.getUser().getScreenName() + " - DATE: " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
+                tweetList.add(new Tweet("FROM: @" + tweet.getUser().getScreenName() + "  WHEN: " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
                 //tweetList.add(new Tweet(tweet.getSource() + " - " + tweet.getUser().getScreenName() + " - " + tweet.getCreatedAt().toString(), tweet.getText(), tweetImageURL));
             }
 
         } catch (TwitterException te) {
             te.printStackTrace();
-            Toast.makeText(Results.this, "Failed to search tweets: " + te.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(ResultsActivity.this, "Failed to search tweets: " + te.getMessage(), Toast.LENGTH_LONG).show();
             alertView("Failed to search tweets: " + te.getMessage());
         }
 
