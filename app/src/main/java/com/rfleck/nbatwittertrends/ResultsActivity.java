@@ -2,9 +2,9 @@ package com.rfleck.nbatwittertrends;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -15,7 +15,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import twitter4j.*;
+import twitter4j.MediaEntity;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -53,8 +59,8 @@ public class ResultsActivity extends AppCompatActivity {
             Query query = new Query(selectedTeam.getTeamCity() + " " + selectedTeam.getTeamName());
             query.setCount(30);
             //query.setResultType(Query.ResultType.popular);
-            query.setResultType(Query.ResultType.recent);
-            //query.setResultType(Query.ResultType.mixed);
+            //query.setResultType(Query.ResultType.recent);
+            query.setResultType(Query.ResultType.mixed);
 
             QueryResult result;
             result = twitter.search(query);
